@@ -1,0 +1,54 @@
+<html>
+    <head>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>How Many Cameras</title>
+
+        <link rel="stylesheet" href="styles/gallery.css">
+        
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap"
+        rel="stylesheet">
+     </head>
+    <body>
+        <div class="navbar">
+            <a class="navbar-brand" href="indice.html">Photography</a>
+        <ul>
+            
+            <li><a href="cameras.html">Cameras</a></li>
+            <li><a href="types.html">Types</a></li>
+            <li><a href="subscribe.html">Subscribe</a></li>
+        
+        </ul>
+        </div>
+        <div class="full-img" id="fullImgBox">
+            <img src="photone.jpg" id="fullImg">
+            <span onclick="closeFullImg()">x</span>
+        </div>
+            <div class="img-gallery" >
+                <img src="img/photone.jpg"  onclick="openFullImg(this.src)">
+                <img src="img/phototwo.jpg" onclick="openFullImg(this.src)">
+                <img src="img/photothree.jpg"  onclick="openFullImg(this.src)">
+                <img src="img/photofour.jpg"  onclick="openFullImg(this.src)">
+                <img src="img/photofive.jpg"  onclick="openFullImg(this.src)">
+                <img src="img/photosix.jpg"  onclick="openFullImg(this.src)">
+                <img src="img/photoseven.jpg"  onclick="openFullImg(this.src)">
+                <img src="img/photoeight.jpg"  onclick="openFullImg(this.src)">
+            </div>
+        <script>
+            var fullImgBox = document.getElementById("fullImgBox");
+            var fullImg = document.getElementById("fullImg");
+
+          function openFullImg(pic){
+              fullImgBox.style.display = "flex";
+              fullImg.src = pic;
+
+          }  
+
+          function closeFullImg(){
+            fullImgBox.style.display = "none";
+          }
+          
+
+        </script>
+    </body>
+</html>

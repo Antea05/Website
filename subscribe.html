@@ -1,0 +1,94 @@
+<!--
+    Il documento, contenente il codice phop, si puo' eseguire esclusivamente cambiando l'estensione del file da .html a .php 
+    A causa di ciò qundo si visiona il sito nella pagina "subscribe" verranno visualizzati i diversi banner di errore / conferma
+ poichè sono regolamentati nel php , non attualmente in funzione. -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       
+        <title>Subsctition</title>
+
+        <link rel="stylesheet" href="styles/stylesub.css">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        
+
+    </head>
+        <body>
+            <div class="banner">
+            <div class="navbar">
+                <a class="navbar-brand" href="indice.html">Photography</a>
+                <ul>
+                    
+                    <li><a href="cameras.html">Cameras</a></li>
+                    <li><a href="types.html">Types</a></li>
+                    <li><a href="subscribe.html">Subscribe</a></li>
+                
+                </ul> 
+            </div>
+            </div>
+            <input type="checkbox" id= "toggle">
+            <label for="toggle" class="show-btn">SUBSCRIBE</label>
+            
+            
+            <div class="wrapper">
+                <label for="toggle">
+                    <i class="cancel-icon fas fa-times"></i>
+                </label>
+                
+                <div class="icon"><i class="far fa-envelope"></i></div>
+                <div class="content">
+                    <header>Become a Subscriber</header>
+                    <p>Your information is safe, we will not share it</p>
+                </div>
+                <form action="subscribe.html" method="POST">
+                    <?php
+                    $userEmail = "";
+                    if(isset($_POST['subescribe'])){ //if subscribe btn clicked
+                        $userEmail = $_POST['email']; //getting user email
+                        if(filter_var( $userEmail, FILTER_VALIDATE-EMAIL)){ //validating user entered email 
+                            $subject = "Thanks for subescribing us";
+                            $message = "Thanks! You'll always recive latest updates from us";
+                            $sender = "From: antea.lucianetti@gmail.com";
+                            if(mail($userEmail,$subject $message, $sender )){
+                                ?>
+                                <!--show a succes message if mail sent seccessfully-->
+                                <div class="alert succes">Thanks for subscribing us</div>
+                                <?php
+                                $userEmail = "";
+                                
+                            }else{
+                                ?>
+                                <!--show an error message if somehow mail can't be sent-->
+                                <div class="alert error">Failed while sending your email</div>
+                                <?php
+
+                            }
+
+                        }else{
+                           ?>
+                           <!--show an error message if user email is not valid-->
+                           <div class="alert error"><?php echo $userEmail ?> is not a valid email</div>
+                           <?php
+
+                        } 
+
+}  
+?>
+                  <div class="field">
+                      
+                        <input type="text" placeholder="Email Address" required value="<?php echo   $userEmail ?>">
+                    </div>
+                        <div class="field btn">
+                            <input type="submit" value="Subscribe">
+                        </div>
+                    
+                </form>
+            </div>
+              
+        </body>
+   
+</html>
